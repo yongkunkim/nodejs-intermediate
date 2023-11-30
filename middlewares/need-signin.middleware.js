@@ -14,7 +14,7 @@ export const needSignin = async (req, res, next) => {
       });
     }
 
-    const [tokenType, accessToken] = authorizationHeader?.split(' ');
+    const [tokenType, accessToken] = authorizationHeader.split(' ');
 
     if (tokenType !== 'Bearer') {
       return res.status(400).json({

@@ -102,6 +102,13 @@ productsRouter.get('/:productId', async (req, res) => {
       include: { model: Users, as: 'user', attributes: [] },
     });
 
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: '상품 조회에 실패했습니다.',
+      });
+    }
+
     return res.status(200).json({
       success: true,
       message: '상품 목록 조회에 성공했습니다.',
